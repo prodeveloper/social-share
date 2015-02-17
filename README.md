@@ -2,28 +2,24 @@
 
 Share links with Laravel 5
 
-This is a fork to John's share for Laravel 4
+This is a fork to John's share for Laravel 4. 
  
 
 
 ## Installation
 
-Run
+Step 1 : Install Composer dependency
 
     composer require chencha/share
-    
 
-Now open up `app/config/app.php` and add the service provider to your `providers` array.
+Step 2 : Register the Service Provider
 
-    'providers' => array(
-        'Thujohn\Share\ShareServiceProvider',
-    )
+Add *Chencha\Share\ShareServiceProvider* to providers array in *config/app.php*
 
-Now add the alias.
+Step 3 : Register Alias
 
-    'aliases' => array(
-        'Share' => 'Thujohn\Share\ShareFacade',
-    )
+
+Add *Chencha\Share\ShareFacade* to aliases array in *config/app.php*
 
 
 ## Usage
