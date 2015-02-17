@@ -1,0 +1,31 @@
+{
+  "name": "chencha/share",
+  "description": "Share links with Laravel 5",
+  "keywords": [
+    "share",
+    "laravel",
+    "laravel5"
+  ],
+  "version": 5.0,
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "thujohn",
+      "email": "jonathan.thuau@gmail.com"
+    },
+    {
+      "name": "chencha",
+      "email": "jacob@chenchatech.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "illuminate/support": "5.x"
+  },
+  "autoload": {
+    "psr-0": {
+      "Chencha\\Share": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
