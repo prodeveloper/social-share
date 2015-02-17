@@ -6,7 +6,7 @@
     "laravel",
     "laravel5"
   ],
-
+  "version": 5.0,
   "license": "MIT",
   "authors": [
     {
