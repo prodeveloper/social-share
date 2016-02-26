@@ -61,6 +61,10 @@ class Share {
 		return 'https://mail.google.com/mail/?view=cm&fs=1&to&ui=2&tf=1&su='.$this->link.(($this->text) ? '&body='.$this->text : '');
 	}
 
+    public function email(){
+        return 'mailto:?subject=Event: ' . $this->text . '&amp;body=Check out this event ' . $this->link;
+    }
+
 	public function gplus(){
 		return 'https://plus.google.com/share?url='.$this->link;
 	}
