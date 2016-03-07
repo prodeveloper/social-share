@@ -100,4 +100,8 @@ class Share {
 	public function vk(){
 		return 'http://vk.com/share.php?url='.$this->link.(($this->media) ? '&image='.$this->media : '').(($this->text) ? '&title='.$this->text : '').'&noparse=false';
 	}
+	
+	public function whatsapp(){
+		return 'whatsapp://send?text='.(($this->text) ? $this->text.'%20' : '').$this->link;
+	}
 }
