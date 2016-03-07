@@ -6,7 +6,7 @@
     "laravel",
     "laravel5"
   ],
-  "version": "5.0.1",
+  "version": "5.1.0",
   "license": "MIT",
   "authors": [
     {
@@ -23,13 +23,21 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
-    "illuminate/support": "5.x"
+    "php": ">=5.6.0",
+    "illuminate/support": "^5.0"
   },
   "autoload": {
     "psr-0": {
       "Chencha\\Share": "src/"
-    }
+    },
+    "classmap": [
+        "tests/TestCase.php"
+    ]
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "require-dev": {
+    "orchestra/testbench": "~3.0",
+    "mockery/mockery": "^0.9.4",
+    "guzzlehttp/guzzle": "^6.1"
+  }
 }

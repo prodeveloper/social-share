@@ -59,7 +59,6 @@ Returns an array :
 - Pinterest : pinterest
 - Reddit : reddit
 - Scoop.it : scoopit
-- Springpad : springpad
 - Tumblr : tumblr
 - Twitter : twitter
 - Viadeo : viadeo
