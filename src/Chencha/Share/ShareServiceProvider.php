@@ -18,6 +18,9 @@ class ShareServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+        $configPath = __DIR__.'/../../config/social-share.php';
+        $this->publishes([$configPath => config_path('social-share.php')]);
+        $this->loadViewsFrom(__DIR__.'/../../views', 'social-share');
 	}
 
 	/**
@@ -27,9 +30,12 @@ class ShareServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['share'] = $this->app->share(function($app)
+        $configPath = __DIR__.'/../../config/social-share.php';
+        $this->mergeConfigFrom($configPath, 'social-share');
+
+		$this->app->singleton('share', function($app)
 		{
-			return new Share;
+			return new Share($app);
 		});
 	}
 
