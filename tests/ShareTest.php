@@ -110,6 +110,7 @@ class ShareTest extends TestCase
             "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
             "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
             "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
+            "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
         ];
 
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
@@ -126,7 +127,8 @@ class ShareTest extends TestCase
             'tumblr',
             'twitter',
             'viadeo',
-            'vk'
+            'vk',
+            'whatsapp'
         );
 
         $this->assertEquals($expected, $actual);
