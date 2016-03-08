@@ -5,6 +5,29 @@ use GuzzleHttp\Client;
 
 class ShareTest extends TestCase
 {
+    protected $expected = [
+        "delicious" => "https://delicious.com/post?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "digg" => "http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "email" => "mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com",
+        "evernote" => "http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "facebook" => "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example",
+        "gmail" => "https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1",
+        "gplus" => "https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com",
+        "linkedin" => "http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fwww.example.com&title=Example&mini=true",
+        "pinterest" => "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com&description=Example&media=Media",
+        "reddit" => "http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "scoopit" => "http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "tumblr" => "http://www.tumblr.com/share?u=http%3A%2F%2Fwww.example.com&t=Example&v=3",
+        "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
+        "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
+        "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
+        "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
+
+        "service" => "http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media",
+        "service2" => "http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra+1&extra2=Extra+2",
+    ];
+
     protected function getPackageProviders($app)
     {
         return [
@@ -93,29 +116,19 @@ class ShareTest extends TestCase
                             Share::load('http://www.example.com')->service2());
     }
 
+    public function testSeparator()
+    {
+        $this->app->config->set('social-share.separator', '&amp;');
+        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com&amp;title=Example',
+                            Share::load('http://www.example.com', 'Example')->service());
+    }
+
     public function testServices()
     {
-        $expected = [
-            "delicious" => "https://delicious.com/post?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "digg" => "http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "evernote" => "http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "facebook" => "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example",
-            "gmail" => "https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1",
-            "gplus" => "https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com",
-            "linkedin" => "http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fwww.example.com&title=Example&mini=true",
-            "pinterest" => "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com&description=Example&media=Media",
-            "reddit" => "http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "scoopit" => "http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "tumblr" => "http://www.tumblr.com/share?u=http%3A%2F%2Fwww.example.com&t=Example&v=3",
-            "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
-            "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
-            "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
-            "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
-        ];
-
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
             'delicious',
             'digg',
+            'email',
             'evernote',
             'facebook',
             'gmail',
@@ -128,10 +141,19 @@ class ShareTest extends TestCase
             'twitter',
             'viadeo',
             'vk',
-            'whatsapp'
+            'whatsapp',
+
+            'service',
+            'service2'
         );
 
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($this->expected, $actual);
+    }
+
+    public function testDefaultIsAll()
+    {
+        $actual = Share::load('http://www.example.com', 'Example', 'Media')->services();
+        $this->assertEquals($this->expected, $actual);
     }
 
     protected function assertPageFound($url)
@@ -161,6 +183,16 @@ class ShareTest extends TestCase
     {
         $url = 'http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->digg());
+        // $this->assertPageFound($url);
+    }
+
+    /**
+     * @group live
+     */
+    public function testEmail()
+    {
+        $url = 'mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->email());
         // $this->assertPageFound($url);
     }
 

@@ -23,6 +23,10 @@ class Share {
 	public function services(){
 		$services = func_get_args();
 
+        if (empty($services)) {
+            $services = array_keys($this->app->config->get('social-share.services'));
+        }
+
 		$object = false;
 		if (end($services) === true)
 		{
