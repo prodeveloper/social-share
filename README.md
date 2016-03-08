@@ -87,7 +87,7 @@ Add a new service in config/social-share.php:
 
     'mynewservice' => [ 'view' => 'share.mynewservice' ]
 
-Add some Blade templating code in *share.mynewservice* view file to generate a URL for *mynewservice*. You have access to:
+Add Blade templating code in *share.mynewservice* view file to generate a URL for *mynewservice*. You have access to:
 
 - service - the service definition (shown above).
 - sep - separator used between parameters, defaults to '&amp;'. Configurable as *social-share.separator*.
