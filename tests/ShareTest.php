@@ -116,6 +116,13 @@ class ShareTest extends TestCase
                             Share::load('http://www.example.com')->service2());
     }
 
+    public function testSeparator()
+    {
+        $this->app->config->set('social-share.separator', '&amp;');
+        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com&amp;title=Example',
+                            Share::load('http://www.example.com', 'Example')->service());
+    }
+
     public function testServices()
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
