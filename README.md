@@ -81,7 +81,7 @@ Returns an array of results for all defined services.
 
 Publish the package config:
 
-    php artisan vendor:publish
+    php artisan vendor:publish --provider='Chencha\Share\ShareServiceProvider'
 
 Add a new service in config/social-share.php:
 
