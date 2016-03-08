@@ -8,6 +8,7 @@ This is a fork to John's share for Laravel 4.
 
 - Delicious : delicious
 - Digg : digg
+- Email : email
 - Evernote : evernote
 - Facebook : facebook
 - Gmail : gmail
