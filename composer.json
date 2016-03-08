@@ -38,6 +38,6 @@
   "require-dev": {
     "orchestra/testbench": "~3.0",
     "mockery/mockery": "^0.9.4",
-    "guzzlehttp/guzzle": "^6.1"
+    "guzzlehttp/guzzle": ">=5.3"
   }
 }
