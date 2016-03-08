@@ -5,6 +5,7 @@ return [
     'services' => [
         'delicious' => [ 'uri' => 'https://delicious.com/post' ],
         'digg' => [ 'uri' => 'http://www.digg.com/submit' ],
+        'email' => [ 'view' => 'social-share::email' ],
         'evernote' => [ 'uri' => 'http://www.evernote.com/clip.action' ],
         'facebook' => [ 'uri' => 'https://www.facebook.com/sharer/sharer.php', 'urlName' => 'u',  ],
         'gmail' => [ 'uri' => 'https://mail.google.com/mail/', 'urlName' => 'su', 'titleName' => 'body', 'extra' => [

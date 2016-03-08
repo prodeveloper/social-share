@@ -6,7 +6,7 @@
     "laravel",
     "laravel5"
   ],
-  "version": "5.1.0",
+  "version": "5.2.0",
   "license": "MIT",
   "authors": [
     {
@@ -23,7 +23,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=5.4.0",
     "illuminate/support": "^5.0"
   },
   "autoload": {
@@ -38,6 +38,6 @@
   "require-dev": {
     "orchestra/testbench": "~3.0",
     "mockery/mockery": "^0.9.4",
-    "guzzlehttp/guzzle": "^6.1"
+    "guzzlehttp/guzzle": ">=5.3"
   }
 }
