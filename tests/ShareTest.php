@@ -8,6 +8,7 @@ class ShareTest extends TestCase
     protected $expected = [
         "delicious" => "https://delicious.com/post?url=http%3A%2F%2Fwww.example.com&title=Example",
         "digg" => "http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "email" => "mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com",
         "evernote" => "http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example",
         "facebook" => "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example",
         "gmail" => "https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1",
@@ -120,6 +121,7 @@ class ShareTest extends TestCase
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
             'delicious',
             'digg',
+            'email',
             'evernote',
             'facebook',
             'gmail',
@@ -174,6 +176,16 @@ class ShareTest extends TestCase
     {
         $url = 'http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->digg());
+        // $this->assertPageFound($url);
+    }
+
+    /**
+     * @group live
+     */
+    public function testEmail()
+    {
+        $url = 'mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->email());
         // $this->assertPageFound($url);
     }
 

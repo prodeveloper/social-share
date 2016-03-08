@@ -76,3 +76,37 @@ Get ALL the links
 	});
 
 Returns an array of results for all defined services.
+
+## Customization
+
+Publish the package config:
+
+    php artisan vendor:publish
+
+Add a new service in config/social-share.php:
+
+    'mynewservice' => [ 'view' => 'share.mynewservice' ]
+
+Add some Blade templating code in *share.mynewservice* view file to generate a URL for *mynewservice*. You have access to:
+
+- service - the service definition (shown above).
+- sep - separator used between parameters, defaults to '&amp;'. Configurable as *social-share.separator*.
+- url - the URL being shared.
+- title - the title being shared.
+- media - media link being shared.
+
+Example:
+
+    https://mynewservice.example.com?url={{ urlencode($url) }}<?php echo $sep; ?>title={{ urlencode("Check this out! $title. See it here: $url") }}
+
+Another example for the *email* service. Change the service config to be *[ 'view' => 'whatever' ]* and put this in the view file:
+
+    mailto?subject={{ urlencode("Wow, check this: $title") }}<?php echo $sep; ?>body={{ urlencode("Check this out! $title. See it here: $url") }}
+
+Localizing? Easy, use Laravel's trans() call:
+
+    mailto:subject={{ urlencode(trans('share.email-subject', compact('url', 'title', 'media'))) }}<?php echo $sep ?>body={{ urlencode(trans('share.email-body', compact('url', 'title', 'media'))) }}
+
+Create a file at resources/lang/en/share.php with your choice of subject and body. URLs arguably have a maximum length of 2000 characters.
+
+Notice the use of *<?php echo $sep; ?>*. It's the only way to print out an unencoded ampersand (if configured that way).
