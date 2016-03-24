@@ -1,1 +1,1 @@
-mailto:?subject={{ urlencode($title) }}&body={{ urlencode($url) }}
+mailto:?subject={{ rawurlencode($title) }}&body={{ rawurlencode($url) }}
