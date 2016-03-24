@@ -21,11 +21,11 @@ class ShareTest extends TestCase
         "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
         "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
         "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
-        "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
-        "whatsapp" => "whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com",
+        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
+        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
 
         "service" => "http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media",
-        "service2" => "http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra+1&extra2=Extra+2",
+        "service2" => "http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra%201&extra2=Extra%202",
     ];
 
     protected function getPackageProviders($app)
@@ -112,7 +112,7 @@ class ShareTest extends TestCase
 
     public function testRenderExtra()
     {
-        $this->assertEquals('http://service2.example.com?url=http%3A%2F%2Fwww.example.com&extra1=Extra+1&extra2=Extra+2',
+        $this->assertEquals('http://service2.example.com?url=http%3A%2F%2Fwww.example.com&extra1=Extra%201&extra2=Extra%202',
                             Share::load('http://www.example.com')->service2());
     }
 
@@ -321,7 +321,7 @@ class ShareTest extends TestCase
      */
     public function testWhatsapp()
     {
-        $url = 'whatsapp://send?text=Example+http%3A%2F%2Fwww.example.com';
+        $url = 'whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->whatsapp());
         // $this->assertPageFound($url);
     }

@@ -98,15 +98,15 @@ Add Blade templating code in *share.mynewservice* view file to generate a URL fo
 
 Example:
 
-    https://mynewservice.example.com?url={{ urlencode($url) }}<?php echo $sep; ?>title={{ urlencode("Check this out! $title. See it here: $url") }}
+    https://mynewservice.example.com?url={{ rawurlencode($url) }}<?php echo $sep; ?>title={{ rawurlencode("Check this out! $title. See it here: $url") }}
 
 Another example for the *email* service. Change the service config to be *[ 'view' => 'whatever' ]* and put this in the view file:
 
-    mailto?subject={{ urlencode("Wow, check this: $title") }}<?php echo $sep; ?>body={{ urlencode("Check this out! $title. See it here: $url") }}
+    mailto:?subject={{ rawurlencode("Wow, check this: $title") }}<?php echo $sep; ?>body={{ rawurlencode("Check this out! $title. See it here: $url") }}
 
 Localizing? Easy, use Laravel's trans() call:
 
-    mailto:subject={{ urlencode(trans('share.email-subject', compact('url', 'title', 'media'))) }}<?php echo $sep ?>body={{ urlencode(trans('share.email-body', compact('url', 'title', 'media'))) }}
+    mailto:?subject={{ rawurlencode(trans('share.email-subject', compact('url', 'title', 'media'))) }}<?php echo $sep ?>body={{ rawurlencode(trans('share.email-body', compact('url', 'title', 'media'))) }}
 
 Create a file at resources/lang/en/share.php with your choice of subject and body. URLs arguably have a maximum length of 2000 characters.
 
