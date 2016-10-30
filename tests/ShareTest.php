@@ -150,6 +150,35 @@ class ShareTest extends TestCase
         $this->assertEquals($this->expected, $actual);
     }
 
+    public function testServicesWithArray()
+    {
+        $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
+            [
+                'delicious',
+                'digg',
+                'email',
+                'evernote',
+                'facebook',
+                'gmail',
+                'gplus',
+                'linkedin',
+                'pinterest',
+                'reddit',
+                'scoopit',
+                'tumblr',
+                'twitter',
+                'viadeo',
+                'vk',
+                'whatsapp',
+
+                'service',
+                'service2',
+            ]
+        );
+
+        $this->assertEquals($this->expected, $actual);
+    }
+
     public function testDefaultIsAll()
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services();

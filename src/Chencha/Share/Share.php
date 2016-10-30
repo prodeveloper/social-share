@@ -25,6 +25,8 @@ class Share {
 
         if (empty($services)) {
             $services = array_keys($this->app->config->get('social-share.services'));
+        } elseif (is_array($services[0])) {
+            $services = $services[0];
         }
 
         $object = false;
