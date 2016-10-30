@@ -5,50 +5,50 @@ use View;
 class Share {
     protected $app;
 
-	protected $url;
-	protected $title;
-	protected $media;
+    protected $url;
+    protected $title;
+    protected $media;
 
     public function __construct($app){
         $this->app = $app;
     }
 
-	public function load($url, $title = '', $media = ''){
-		$this->url = $url;
-		$this->title = $title;
-		$this->media = $media;
-		return $this;
-	}
+    public function load($url, $title = '', $media = ''){
+        $this->url = $url;
+        $this->title = $title;
+        $this->media = $media;
+        return $this;
+    }
 
-	public function services(){
-		$services = func_get_args();
+    public function services() {
+        $services = func_get_args();
 
         if (empty($services)) {
             $services = array_keys($this->app->config->get('social-share.services'));
         }
 
-		$object = false;
-		if (end($services) === true)
-		{
-			$object = true;
-			array_pop($services);
-		}
+        $object = false;
+        if (end($services) === true)
+        {
+            $object = true;
+            array_pop($services);
+        }
 
-		$return = array();
+        $return = array();
 
-		if ($services){
-			foreach ($services as $service){
+        if ($services){
+            foreach ($services as $service){
                 $return[$service] = $this->$service();
-			}
-		}
+            }
+        }
 
-		if ($object)
-		{
-			return (object) $return;
-		}
+        if ($object)
+        {
+            return (object) $return;
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 
     protected function generateUrl($serviceId) {
         $vars = [
