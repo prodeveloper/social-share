@@ -17,6 +17,7 @@ This is a fork to John's share for Laravel 4.
 - Pinterest : pinterest
 - Reddit : reddit
 - Scoop.it : scoopit
+- Telegram.me : telegramMe
 - Tumblr : tumblr
 - Twitter : twitter
 - Viadeo : viadeo
