@@ -20,6 +20,7 @@ return [
         'pinterest' => [ 'uri' => 'http://pinterest.com/pin/create/button/', 'titleName' => 'description', 'mediaName' => 'media' ],
         'reddit' => [ 'uri' => 'http://www.reddit.com/submit' ],
         'scoopit' => [ 'uri' => 'http://www.scoop.it/oexchange/share' ],
+        'telegramMe' => [ 'uri' => 'https://telegram.me/share/url', 'titleName' => 'text' ],
         'tumblr' => [ 'uri' => 'http://www.tumblr.com/share', 'urlName' => 'u', 'titleName' => 't', 'extra' => [
             'v' => 3,
         ]],

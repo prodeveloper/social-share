@@ -17,6 +17,7 @@ class ShareTest extends TestCase
         "pinterest" => "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com&description=Example&media=Media",
         "reddit" => "http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
         "scoopit" => "http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example",
+        "telegramMe" => "https://telegram.me/share/url?url=http%3A%2F%2Fwww.example.com&text=Example",
         "tumblr" => "http://www.tumblr.com/share?u=http%3A%2F%2Fwww.example.com&t=Example&v=3",
         "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
         "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
@@ -137,6 +138,7 @@ class ShareTest extends TestCase
             'pinterest',
             'reddit',
             'scoopit',
+            'telegramMe',
             'tumblr',
             'twitter',
             'viadeo',
@@ -165,6 +167,7 @@ class ShareTest extends TestCase
                 'pinterest',
                 'reddit',
                 'scoopit',
+                'telegramMe',
                 'tumblr',
                 'twitter',
                 'viadeo',
@@ -302,6 +305,16 @@ class ShareTest extends TestCase
     {
         $url = 'http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->scoopit());
+        // $this->assertPageFound($url);
+    }
+
+    /**
+     * @group live
+     */
+    public function testTelegramMe()
+    {
+        $url = 'https://telegram.me/share/url?url=http%3A%2F%2Fwww.example.com&text=Example';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->telegramMe());
         // $this->assertPageFound($url);
     }
 
