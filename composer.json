@@ -34,6 +34,16 @@
         "tests/TestCase.php"
     ]
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Chencha\\Share\\ShareServiceProvider"
+      ],
+      "aliases": {
+        "Share": "Chencha\\Share\\ShareFacade"
+      }
+    }
+  },
   "minimum-stability": "dev",
   "require-dev": {
     "orchestra/testbench": "~3.0",
