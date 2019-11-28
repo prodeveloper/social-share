@@ -68,7 +68,7 @@ class Share {
             $vars[$varName] = $this->$varName;
         }
 
-        $view = array_get($vars['service'], 'view', 'social-share::default');
+        $view = \Arr::get($vars['service'], 'view', 'social-share::default');
         return trim(View::make($view, $vars)->render());
     }
 
