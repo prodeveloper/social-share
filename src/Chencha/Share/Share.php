@@ -1,26 +1,78 @@
 <?php namespace Chencha\Share;
 
-use View;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\View;
 
-class Share {
+/**
+ * Class Share
+ * @method string delicious()
+ * @method string digg()
+ * @method string email()
+ * @method string evernote()
+ * @method string facebook()
+ * @method string gmail()
+ * @method string gplus()
+ * @method string linkedin()
+ * @method string pinterest()
+ * @method string reddit()
+ * @method string scoopit()
+ * @method string telegramMe()
+ * @method string tumblr()
+ * @method string twitter()
+ * @method string viadeo()
+ * @method string vk()
+ * @package Chencha\Share\Facades
+ */
+class Share
+{
+    /**
+     * The application instance
+     */
     protected $app;
 
+    /**
+     * @var string $url
+     */
     protected $url;
+
+    /**
+     * @var string $title
+     */
     protected $title;
+
+    /**
+     * @var string $media
+     */
     protected $media;
 
-    public function __construct($app){
+    /**
+     * Share constructor.
+     * @param $app
+     */
+    public function __construct($app)
+    {
         $this->app = $app;
     }
 
-    public function load($url, $title = '', $media = ''){
+    /**
+     * @param string $url
+     * @param string $title
+     * @param string $media
+     * @return $this
+     */
+    public function load($url, $title = '', $media = '')
+    {
         $this->url = $url;
         $this->title = $title;
         $this->media = $media;
         return $this;
     }
 
-    public function services() {
+    /**
+     * @return array|object
+     */
+    public function services()
+    {
         $services = func_get_args();
 
         if (empty($services)) {
@@ -30,36 +82,39 @@ class Share {
         }
 
         $object = false;
-        if (end($services) === true)
-        {
+        if (end($services) === true) {
             $object = true;
             array_pop($services);
         }
 
         $return = array();
 
-        if ($services){
-            foreach ($services as $service){
+        if ($services) {
+            foreach ($services as $service) {
                 $return[$service] = $this->$service();
             }
         }
 
-        if ($object)
-        {
-            return (object) $return;
+        if ($object) {
+            return (object)$return;
         }
 
         return $return;
     }
 
-    protected function generateUrl($serviceId) {
+    /**
+     * @param string $serviceId
+     * @return string
+     */
+    protected function generateUrl($serviceId)
+    {
         $vars = [
             'service' => $this->app->config->get("social-share.services.$serviceId", []),
             'sep' => $this->app->config->get('social-share.separator', '&'),
         ];
 
         if (empty($vars['service']['only'])) {
-            $only = [ 'url', 'title', 'media' ];
+            $only = ['url', 'title', 'media'];
         } else {
             $only = $vars['service']['only'];
         }
@@ -68,10 +123,16 @@ class Share {
             $vars[$varName] = $this->$varName;
         }
 
-        $view = \Arr::get($vars['service'], 'view', 'social-share::default');
+        $view = Arr::get($vars['service'], 'view', 'social-share::default');
+
         return trim(View::make($view, $vars)->render());
     }
 
+    /**
+     * @param string $name
+     * @param $arguments
+     * @return string
+     */
     public function __call($name, $arguments)
     {
         return $this->generateUrl($name);

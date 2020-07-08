@@ -41,7 +41,7 @@
         "Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
-        "Share": "Chencha\\Share\\ShareFacade"
+        "Share": "Chencha\\Share\\Facades\\Share"
       }
     }
   },
