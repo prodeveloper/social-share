@@ -23,8 +23,7 @@ class ShareTest extends TestCase
         "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
         "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
         "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
-        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
-
+        
         "service" => "http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media",
         "service2" => "http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra%201&extra2=Extra%202",
     ];
