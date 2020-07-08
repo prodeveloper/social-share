@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Share
- * @method \Chencha\Share\Share load()
+ * @method \Chencha\Share\Share load($url, $title = '', $media = '')
  * @package Chencha\Share\Facades
  */
 class Share extends Facade
