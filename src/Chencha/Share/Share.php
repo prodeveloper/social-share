@@ -1,26 +1,32 @@
 <?php namespace Chencha\Share;
 
+use Chencha\Share\Exceptions\NoServiceIsAvailable;
+use Chencha\Share\Exceptions\ServiceNotSupportedException;
 use View;
 
-class Share {
+class Share
+{
     protected $app;
 
     protected $url;
     protected $title;
     protected $media;
 
-    public function __construct($app){
+    public function __construct($app)
+    {
         $this->app = $app;
     }
 
-    public function load($url, $title = '', $media = ''){
+    public function load($url, $title = '', $media = '')
+    {
         $this->url = $url;
         $this->title = $title;
         $this->media = $media;
         return $this;
     }
 
-    public function services() {
+    public function services()
+    {
         $services = func_get_args();
 
         if (empty($services)) {
@@ -30,36 +36,51 @@ class Share {
         }
 
         $object = false;
-        if (end($services) === true)
-        {
+        if (end($services) === true) {
             $object = true;
             array_pop($services);
         }
 
         $return = array();
 
-        if ($services){
-            foreach ($services as $service){
+        if ($services) {
+            foreach ($services as $service) {
                 $return[$service] = $this->$service();
             }
         }
 
-        if ($object)
-        {
-            return (object) $return;
+        if ($object) {
+            return (object)$return;
         }
 
         return $return;
     }
 
-    protected function generateUrl($serviceId) {
+    /**
+     * @param string $serviceId
+     * @return string
+     * @throws ServiceNotSupportedException
+     * @throws NoServiceIsAvailable
+     */
+    protected function generateUrl($serviceId)
+    {
+        $services = $this->getServices();
+
+        if (empty($services))
+            throw new NoServiceIsAvailable();
+
+        $servicesKeys = array_keys($services);
+
+        if (!in_array($serviceId,$servicesKeys))
+            throw new ServiceNotSupportedException($serviceId, $servicesKeys);
+
         $vars = [
-            'service' => $this->app->config->get("social-share.services.$serviceId", []),
+            'service' => $services[$serviceId],
             'sep' => $this->app->config->get('social-share.separator', '&'),
         ];
 
         if (empty($vars['service']['only'])) {
-            $only = [ 'url', 'title', 'media' ];
+            $only = ['url', 'title', 'media'];
         } else {
             $only = $vars['service']['only'];
         }
@@ -69,11 +90,22 @@ class Share {
         }
 
         $view = \Arr::get($vars['service'], 'view', 'social-share::default');
+
         return trim(View::make($view, $vars)->render());
     }
 
     public function __call($name, $arguments)
     {
         return $this->generateUrl($name);
+    }
+
+    /**
+     * get list of all supported services
+     *
+     * @return array
+     */
+    protected function getServices()
+    {
+        return $this->app->config->get("social-share.services", []);
     }
 }
