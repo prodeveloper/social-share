@@ -39,7 +39,7 @@ class ShareTest extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'Share' => 'Chencha\Share\ShareFacade',
+            'Share' => 'Chencha\Share\Facades\Share',
         ];
     }
 

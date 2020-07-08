@@ -32,13 +32,32 @@ Step 1 : Install Composer dependency
 
 Step 2 : Register the Service Provider
 
-Add *Chencha\Share\ShareServiceProvider* to providers array in *config/app.php*
+Add *Chencha\Share\ShareServiceProvider* to providers array in *config/app.php*:
 
+```php
+[
+    'providers' => [
+            /*
+             * Package Service Providers...
+             */
+            Chencha\Share\ShareServiceProvider::class,
+        ]
+];
+
+```
 Step 3 : Register Alias
 
 
-Add *Share* => *Chencha\Share\ShareFacade* to aliases array in *config/app.php*
+Add *Share* => *Chencha\Share\Facades\Share* to aliases array in *config/app.php*:
 
+```php
+[
+ 'aliases' => [
+        'Share' => Chencha\Share\Facades\Share::class
+        ]
+];
+
+```
 
 ## Usage
 
