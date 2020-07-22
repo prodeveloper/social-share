@@ -1,6 +1,6 @@
 # Share
 
-Share links with Laravel 5
+Share links with Laravel 5+
 
 This is a fork to John's share for Laravel 4. 
  
@@ -11,6 +11,7 @@ This is a fork to John's share for Laravel 4.
 - Email : email
 - Evernote : evernote
 - Facebook : facebook
+- Facebook Messenger : fbMessenger
 - Gmail : gmail
 - Google Plus : gplus
 - LinkedIn : linkedin
@@ -22,6 +23,7 @@ This is a fork to John's share for Laravel 4.
 - Twitter : twitter
 - Viadeo : viadeo
 - vk.com : vk
+- Whatsapp : whatsapp
 
 
 ## Installation

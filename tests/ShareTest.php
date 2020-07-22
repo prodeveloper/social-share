@@ -11,6 +11,7 @@ class ShareTest extends TestCase
         "email" => "mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com",
         "evernote" => "http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example",
         "facebook" => "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example",
+        "fbMessenger" => "fb-messenger://share?link=http%3A%2F%2Fwww.example.com",
         "gmail" => "https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1",
         "gplus" => "https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com",
         "linkedin" => "http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fwww.example.com&title=Example&mini=true",
@@ -22,7 +23,6 @@ class ShareTest extends TestCase
         "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
         "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
         "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
-        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
         "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
 
         "service" => "http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media",
@@ -132,6 +132,7 @@ class ShareTest extends TestCase
             'email',
             'evernote',
             'facebook',
+            'fbMessenger',
             'gmail',
             'gplus',
             'linkedin',
@@ -161,6 +162,7 @@ class ShareTest extends TestCase
                 'email',
                 'evernote',
                 'facebook',
+                'fbMessenger',
                 'gmail',
                 'gplus',
                 'linkedin',
@@ -365,6 +367,16 @@ class ShareTest extends TestCase
     {
         $url = 'whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->whatsapp());
+        // $this->assertPageFound($url);
+    }
+
+    /**
+     * @group live
+     */
+    public function testFbMessenger()
+    {
+        $url = 'fb-messenger://share?link=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->fbMessenger());
         // $this->assertPageFound($url);
     }
 }

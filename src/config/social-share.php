@@ -30,5 +30,6 @@ return [
             'noparse' => 'false',
         ]],
         'whatsapp' => [ 'view' => 'social-share::whatsapp' ],
+        'fbMessenger' => [ 'view' => 'social-share::fbmessenger' ],
     ],
 ];

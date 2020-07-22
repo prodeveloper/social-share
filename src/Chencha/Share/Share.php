@@ -1,5 +1,6 @@
 <?php namespace Chencha\Share;
 
+use Illuminate\Support\Arr;
 use View;
 
 class Share {
@@ -68,7 +69,7 @@ class Share {
             $vars[$varName] = $this->$varName;
         }
 
-        $view = \Arr::get($vars['service'], 'view', 'social-share::default');
+        $view = Arr::get($vars['service'], 'view', 'social-share::default');
         return trim(View::make($view, $vars)->render());
     }
 
