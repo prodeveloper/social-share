@@ -1,6 +1,6 @@
 # Share
 
-Share links with Laravel 5+
+Share links with Laravel 5/6/7
 
 This is a fork to John's share for Laravel 4. 
  
