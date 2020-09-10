@@ -6,7 +6,8 @@
     "laravel",
     "laravel5",
     "laravel6",
-    "laravel7"
+    "laravel7",
+    "laravel8"
   ],
   "version": "5.4.0",
   "license": "MIT",
@@ -26,7 +27,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "illuminate/support": "5.*|^6|^7"
+    "illuminate/support": "5.*|^6|^7|^8"
   },
   "autoload": {
     "psr-0": {
