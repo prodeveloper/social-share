@@ -7,7 +7,7 @@ return [
         'digg' => [ 'uri' => 'http://www.digg.com/submit' ],
         'email' => [ 'view' => 'social-share::email' ],
         'evernote' => [ 'uri' => 'http://www.evernote.com/clip.action' ],
-        'facebook' => [ 'uri' => 'https://www.facebook.com/sharer/sharer.php', 'urlName' => 'u',  ],
+        'facebook' => [ 'uri' => 'https://www.facebook.com/sharer/sharer.php', 'urlName' => 'u', 'titleName' => 'quote'],
         'gmail' => [ 'uri' => 'https://mail.google.com/mail/', 'urlName' => 'su', 'titleName' => 'body', 'extra' => [
             'view' => 'cm',
             'fs' => 1,
@@ -16,7 +16,7 @@ return [
             'tf' => 1,
         ]],
         'gplus' => [ 'uri' => 'https://plus.google.com/share', 'only' => [ 'url' ] ],
-        'linkedin' => [ 'uri' => 'http://www.linkedin.com/shareArticle', 'extra' => [ 'mini' => 'true' ] ],
+        'linkedin' => [ 'uri' => 'http://www.linkedin.com/shareArticle', 'extra' => [ 'mini' => 'true' ], 'titleName' => 'text' ],
         'pinterest' => [ 'uri' => 'http://pinterest.com/pin/create/button/', 'titleName' => 'description', 'mediaName' => 'media' ],
         'reddit' => [ 'uri' => 'http://www.reddit.com/submit' ],
         'scoopit' => [ 'uri' => 'http://www.scoop.it/oexchange/share' ],
