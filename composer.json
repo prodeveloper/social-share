@@ -1,5 +1,5 @@
 {
-  "name": "chencha/share",
+  "name": "thegr8dev/share",
   "description": "Share links with Laravel 5/6/7/8",
   "keywords": [
     "share",
@@ -26,7 +26,7 @@
     }
   ],
   "require": {
-    "php": ">=7.3.0",
+    "php": ">=5.4.0",
     "illuminate/support": "5.*|^6|^7|^8"
   },
   "autoload": {
