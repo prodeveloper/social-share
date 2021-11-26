@@ -35,17 +35,17 @@
   },
   "autoload": {
     "psr-4": {
-      "Thegr8dev\\Share\\" : "src/",
+      "Thegr8dev\\Share\\" : "src/Chencha/",
       "Tests\\": "tests/TestCase.php"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-          "Thegr8dev\\Share\\Chencha\\Share\\ShareServiceProvider"
+          "Thegr8dev\\Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
-          "Share": "Thegr8dev\\Share\\Chencha\\Share\\ShareFacade"
+          "Share": "Thegr8dev\\Chencha\\Share\\ShareFacade"
       }
     }
   },
