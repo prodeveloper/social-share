@@ -45,7 +45,7 @@
           "Thegr8Dev\\Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
-          "Share": "Thegr8Dev\\Chencha\\Share\\ShareFacade"
+          "Share": "Thegr8dev\\Chencha\\Share\\ShareFacade"
       }
     }
   },
