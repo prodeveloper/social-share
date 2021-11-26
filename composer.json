@@ -9,7 +9,7 @@
     "laravel7",
     "laravel8"
   ],
-  "version": "5.7.0",
+  "version": "5.8.0",
   "license": "MIT",
   "authors": [
     {
@@ -42,10 +42,10 @@
   "extra": {
     "laravel": {
       "providers": [
-          "Chencha\\Share\\ShareServiceProvider"
+          "Thegr8dev\\SocialShare\\Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
-          "Share": "Chencha\\Share\\ShareFacade"
+          "Share": "Thegr8dev\\SocialShare\\Chencha\\Share\\ShareFacade"
       }
     }
   },
