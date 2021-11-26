@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Chencha\\Share": "src/",
+      "Chencha\\Share\\": "src/",
       "Tests\\": "tests/TestCase.php"
     }
   },
