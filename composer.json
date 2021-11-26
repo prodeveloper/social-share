@@ -30,12 +30,10 @@
     "illuminate/support": ">=8.0"
   },
   "autoload": {
-    "psr-0": {
-      "Chencha\\Share": "src/"
-    },
-    "classmap": [
-        "tests/TestCase.php"
-    ]
+    "psr-4": {
+      "Chencha\\Share": "src/",
+      "Tests\\": "tests/TestCase.php"
+    }
   },
   "extra": {
     "laravel": {
