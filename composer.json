@@ -42,7 +42,7 @@
   "extra": {
     "laravel": {
       "providers": [
-          "Thegr8Dev\\Chencha\\Share\\ShareServiceProvider"
+          "Thegr8dev\\Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
           "Share": "Thegr8dev\\Chencha\\Share\\ShareFacade"
