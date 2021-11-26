@@ -3,6 +3,8 @@
 Share links with Laravel 5
 
 This is a fork to John's share for Laravel 4. 
+
+This is a fork to prodeveloper/social-share for Laravel 8.  
  
 ## Services available
 
@@ -30,11 +32,11 @@ Step 1 : Install Composer dependency
 
     composer require chencha/share
 
-Step 2 : Register the Service Provider
+Step 2 : Register the Service Provider (Ignore if Laravel auto discovery is on)
 
 Add *Chencha\Share\ShareServiceProvider* to providers array in *config/app.php*
 
-Step 3 : Register Alias
+Step 3 : Register Alias (Ignore if Laravel auto discovery is on)
 
 
 Add *Share* => *Chencha\Share\ShareFacade* to aliases array in *config/app.php*
