@@ -1,6 +1,6 @@
 <?php 
 
-namespace Thegr8dev\Share\Chencha\Share;
+namespace Chencha\Share\Chencha\Share;
 
 use Illuminate\Support\ServiceProvider;
 

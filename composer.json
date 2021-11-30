@@ -1,5 +1,5 @@
 {
-  "name": "thegr8dev/share",
+  "name": "chencha/share",
   "description": "Share links with Laravel 5/6/7/8",
   "keywords": [
     "share",
@@ -9,7 +9,7 @@
     "laravel7",
     "laravel8"
   ],
-  "version": "6.0.0",
+  "version": "5.6.0",
   "license": "MIT",
   "authors": [
     {
@@ -35,17 +35,17 @@
   },
   "autoload": {
     "psr-4": {
-      "Thegr8dev\\Share\\" : "src/",
+      "Chencha\\Share\\" : "src/",
       "Tests\\": "tests/TestCase.php"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-          "Thegr8dev\\Share\\Chencha\\Share\\ShareServiceProvider"
+          "Chencha\\Share\\Chencha\\Share\\ShareServiceProvider"
       ],
       "aliases": {
-          "Share": "Thegr8dev\\Share\\Chencha\\Share\\ShareFacade"
+          "Share": "Chencha\\Share\\Chencha\\Share\\ShareFacade"
       }
     }
   },
