@@ -1,13 +1,11 @@
 {
   "name": "chencha/share",
-  "description": "Share links with Laravel 5/6",
+  "description": "Share links with Laravel",
   "keywords": [
     "share",
-    "laravel",
-    "laravel5",
-    "laravel6"
+    "laravel"
   ],
-  "version": "5.4.0",
+  "version": "5.6.0",
   "license": "MIT",
   "authors": [
     {
@@ -28,12 +26,10 @@
     "illuminate/support": "5.*|^6|^7"
   },
   "autoload": {
-    "psr-0": {
-      "Chencha\\Share": "src/"
-    },
-    "classmap": [
-        "tests/TestCase.php"
-    ]
+    "psr-4": {
+      "Chencha\\Share\\" : "src/",
+      "Tests\\": "tests/TestCase.php"
+    }
   },
   "extra": {
     "laravel": {

@@ -1,4 +1,6 @@
-<?php namespace Chencha\Share;
+<?php
+
+namespace Chencha\Share;
 
 use Illuminate\Support\Facades\Facade;
 

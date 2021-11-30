@@ -1,4 +1,6 @@
-<?php namespace Chencha\Share;
+<?php
+
+namespace Chencha\Share;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -48,5 +50,4 @@ class ShareServiceProvider extends ServiceProvider {
 	{
 		return array('share');
 	}
-
 }
