@@ -22,13 +22,13 @@
     }
   ],
   "require": {
-    "php": ">=5.4.0",
-    "illuminate/support": "5.*|^6|^7"
+    "php": "^7.4|^8",
+    "illuminate/support": "^6|^7|^8"
   },
   "autoload": {
     "psr-4": {
       "Chencha\\Share\\" : "src/",
-      "Tests\\": "tests/TestCase.php"
+      "Tests\\": "tests/"
     }
   },
   "extra": {
@@ -43,8 +43,6 @@
   },
   "minimum-stability": "dev",
   "require-dev": {
-    "orchestra/testbench": "~3.0",
-    "mockery/mockery": "^0.9.4",
-    "guzzlehttp/guzzle": ">=5.3"
+    "orchestra/testbench": "^4|^5|^6"
   }
 }

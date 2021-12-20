@@ -3,7 +3,7 @@
 namespace Chencha\Share;
 
 use Illuminate\Support\Arr;
-use View;
+use Illuminate\Support\Facades\View;
 
 class Share
 {

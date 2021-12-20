@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\View\Factory as ViewFactory;
+namespace Tests;
+
+use Chencha\Share\ShareFacade as Share;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\View;
+use Illuminate\View\Factory as ViewFactory;
 
 class ShareTest extends TestCase
 {
@@ -95,33 +99,43 @@ class ShareTest extends TestCase
 
     public function testRenderUrlOnly()
     {
-        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com',
-                            Share::load('http://www.example.com')->service());
+        $this->assertEquals(
+            'http://service.example.com?url=http%3A%2F%2Fwww.example.com',
+            Share::load('http://www.example.com')->service()
+        );
     }
 
     public function testRenderUrlAndTitle()
     {
-        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example',
-                            Share::load('http://www.example.com', 'Example')->service());
+        $this->assertEquals(
+            'http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example',
+            Share::load('http://www.example.com', 'Example')->service()
+        );
     }
 
     public function testRenderUrlTitleAndMedia()
     {
-        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media',
-                            Share::load('http://www.example.com', 'Example', 'Media')->service());
+        $this->assertEquals(
+            'http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media',
+            Share::load('http://www.example.com', 'Example', 'Media')->service()
+        );
     }
 
     public function testRenderExtra()
     {
-        $this->assertEquals('http://service2.example.com?url=http%3A%2F%2Fwww.example.com&extra1=Extra%201&extra2=Extra%202',
-                            Share::load('http://www.example.com')->service2());
+        $this->assertEquals(
+            'http://service2.example.com?url=http%3A%2F%2Fwww.example.com&extra1=Extra%201&extra2=Extra%202',
+            Share::load('http://www.example.com')->service2()
+        );
     }
 
     public function testSeparator()
     {
         $this->app->config->set('social-share.separator', '&amp;');
-        $this->assertEquals('http://service.example.com?url=http%3A%2F%2Fwww.example.com&amp;title=Example',
-                            Share::load('http://www.example.com', 'Example')->service());
+        $this->assertEquals(
+            'http://service.example.com?url=http%3A%2F%2Fwww.example.com&amp;title=Example',
+            Share::load('http://www.example.com', 'Example')->service()
+        );
     }
 
     public function testServices()
@@ -144,7 +158,6 @@ class ShareTest extends TestCase
             'viadeo',
             'vk',
             'whatsapp',
-
             'service',
             'service2'
         );
@@ -195,7 +208,7 @@ class ShareTest extends TestCase
         ]);
 
         $response = $client->head($url);
-        $this->assertEquals(200,  $response->getStatusCode());
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     /**
