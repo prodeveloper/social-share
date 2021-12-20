@@ -1,5 +1,7 @@
 <?php
 
-class TestCase extends Orchestra\Testbench\TestCase
+namespace Tests;
+
+class TestCase extends \Orchestra\Testbench\TestCase
 {
 }
