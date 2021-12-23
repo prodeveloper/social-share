@@ -7,7 +7,7 @@ return [
         'email' => [ 'view' => 'social-share::email' ],
         'evernote' => [ 'uri' => 'http://www.evernote.com/clip.action' ],
         'facebook' => [ 'uri' => 'https://www.facebook.com/sharer/sharer.php', 'urlName' => 'u', 'titleName' => 'quote'],
-        'gmail' => [ 'uri' => 'https://mail.google.com/mail/', 'urlName' => 'body', 'titleName' => 'su', 'extra' => [
+        'gmail' => [ 'uri' => 'https://mail.google.com/mail/', 'urlName' => 'su', 'titleName' => 'body', 'extra' => [
             'view' => 'cm',
             'fs' => 1,
             'to' => '',
