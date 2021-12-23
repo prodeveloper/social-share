@@ -6,6 +6,7 @@ This is a fork of John's share for Laravel 4.
  
 ## Services available
 
+- Blogger : blogger
 - Delicious : delicious
 - Digg : digg
 - Email : email
@@ -102,3 +103,7 @@ Localizing? Easy, use Laravel's trans() call:
 Create a file at resources/lang/en/share.php with your choice of subject and body. URLs arguably have a maximum length of 2000 characters.
 
 Notice the use of *<?php echo $sep; ?>*. It's the only way to print out an unencoded ampersand (if configured that way).
+
+## Upgrades
+
+When upgrading please republish the package config and views to get the latest changes if you have customized.
