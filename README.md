@@ -6,6 +6,7 @@ This is a fork of John's share for Laravel 4.
  
 ## Services available
 
+- Blogger : blogger
 - Digg : digg
 - Email : email
 - Evernote : evernote
