@@ -3,6 +3,7 @@
 return [
     'separator' => '&',
     'services' => [
+        'blogger' => [ 'uri' => 'https://www.blogger.com/blog-this.g', 'urlName' => 'u', 'titleName' => 'n' ],
         'digg' => [ 'uri' => 'https://digg.com/news/submit-link', 'only' => [ 'url' ] ],
         'email' => [ 'view' => 'social-share::email' ],
         'evernote' => [ 'uri' => 'http://www.evernote.com/clip.action' ],

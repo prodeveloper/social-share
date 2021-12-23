@@ -10,6 +10,7 @@ use Illuminate\View\Factory as ViewFactory;
 class ShareTest extends TestCase
 {
     protected $expected = [
+        'blogger' => 'https://www.blogger.com/blog-this.g?u=http%3A%2F%2Fwww.example.com&n=Example',
         'digg' => 'https://digg.com/news/submit-link?url=http%3A%2F%2Fwww.example.com',
         'email' => 'mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com',
         'evernote' => 'http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example',
@@ -136,6 +137,7 @@ class ShareTest extends TestCase
     public function testServices()
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
+            'blogger',
             'digg',
             'email',
             'evernote',
@@ -161,6 +163,7 @@ class ShareTest extends TestCase
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
             [
+                'blogger',
                 'digg',
                 'email',
                 'evernote',
@@ -197,6 +200,16 @@ class ShareTest extends TestCase
 
         $response = $client->head($url);
         $this->assertEquals(200, $response->getStatusCode());
+    }
+
+    /**
+     * @group live
+     */
+    public function testBlogger()
+    {
+        $url = 'https://www.blogger.com/blog-this.g?u=http%3A%2F%2Fwww.example.com&n=Example';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->blogger());
+        // $this->assertPageFound($url);
     }
 
     /**
