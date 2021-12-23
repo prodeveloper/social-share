@@ -7,13 +7,11 @@ This is a fork of John's share for Laravel 4.
 ## Services available
 
 - Blogger : blogger
-- Delicious : delicious
 - Digg : digg
 - Email : email
 - Evernote : evernote
 - Facebook : facebook
 - Gmail : gmail
-- Google Plus : gplus
 - LinkedIn : linkedin
 - Pinterest : pinterest
 - Reddit : reddit
@@ -21,7 +19,6 @@ This is a fork of John's share for Laravel 4.
 - Telegram.me : telegramMe
 - Tumblr : tumblr
 - Twitter : twitter
-- Viadeo : viadeo
 - vk.com : vk
 
 
@@ -49,13 +46,12 @@ Get many links
 
 	Route::get('/', function()
 	{
-		return Share::load('http://www.example.com', 'Link description')->services('facebook', 'gplus', 'twitter');
+		return Share::load('http://www.example.com', 'Link description')->services('facebook', 'twitter');
 	});
 
 Returns an array :
 
     {
-        "gplus" : "https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com",
         "twitter" : "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Link+description",
         "facebook" : "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Link+description"
     }
@@ -106,4 +102,8 @@ Notice the use of *<?php echo $sep; ?>*. It's the only way to print out an unenc
 
 ## Upgrades
 
-When upgrading please republish the package config and views to get the latest changes if you have customized.
+When the package is upgraded, changes to the config and views should be republished into your project:
+
+    php artisan vendor:publish --provider='Chencha\Share\ShareServiceProvider'
+
+Use source control to work out what has changed if you have customized the files.
