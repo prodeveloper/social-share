@@ -10,27 +10,23 @@ use Illuminate\View\Factory as ViewFactory;
 class ShareTest extends TestCase
 {
     protected $expected = [
-        "delicious" => "https://delicious.com/post?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "digg" => "http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "email" => "mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com",
-        "evernote" => "http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "facebook" => "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example",
-        "gmail" => "https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1",
-        "gplus" => "https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com",
-        "linkedin" => "http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fwww.example.com&title=Example&mini=true",
-        "pinterest" => "http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com&description=Example&media=Media",
-        "reddit" => "http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "scoopit" => "http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "telegramMe" => "https://telegram.me/share/url?url=http%3A%2F%2Fwww.example.com&text=Example",
-        "tumblr" => "http://www.tumblr.com/share?u=http%3A%2F%2Fwww.example.com&t=Example&v=3",
-        "twitter" => "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example",
-        "viadeo" => "http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example",
-        "vk" => "http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false",
-        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
-        "whatsapp" => "whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com",
-
-        "service" => "http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media",
-        "service2" => "http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra%201&extra2=Extra%202",
+        'blogger' => 'https://www.blogger.com/blog-this.g?u=http%3A%2F%2Fwww.example.com&n=Example',
+        'digg' => 'https://digg.com/news/submit-link?url=http%3A%2F%2Fwww.example.com',
+        'email' => 'mailto:?subject=Example&body=http%3A%2F%2Fwww.example.com',
+        'evernote' => 'http://www.evernote.com/clip.action?url=http%3A%2F%2Fwww.example.com&title=Example',
+        'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&quote=Example',
+        'gmail' => 'https://mail.google.com/mail/?su=http%3A%2F%2Fwww.example.com&body=Example&view=cm&fs=1&to=&ui=2&tf=1',
+        'linkedin' => 'https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Fwww.example.com',
+        'pinterest' => 'https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com',
+        'reddit' => 'https://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example',
+        'scoopit' => 'https://www.scoop.it/bookmarklet?url=http%3A%2F%2Fwww.example.com',
+        'telegramMe' => 'https://telegram.me/share/url?url=http%3A%2F%2Fwww.example.com&text=Example',
+        'tumblr' => 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=http%3A%2F%2Fwww.example.com&title=Example',
+        'twitter' => 'https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example',
+        'vk' => 'http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title=Example&image=Media&noparse=false',
+        'whatsapp' => 'whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com',
+        'service' => 'http://service.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&media=Media',
+        'service2' => 'http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra%201&extra2=Extra%202',
     ];
 
     protected function getPackageProviders($app)
@@ -141,13 +137,12 @@ class ShareTest extends TestCase
     public function testServices()
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
-            'delicious',
+            'blogger',
             'digg',
             'email',
             'evernote',
             'facebook',
             'gmail',
-            'gplus',
             'linkedin',
             'pinterest',
             'reddit',
@@ -155,7 +150,6 @@ class ShareTest extends TestCase
             'telegramMe',
             'tumblr',
             'twitter',
-            'viadeo',
             'vk',
             'whatsapp',
             'service',
@@ -169,13 +163,12 @@ class ShareTest extends TestCase
     {
         $actual = Share::load('http://www.example.com', 'Example', 'Media')->services(
             [
-                'delicious',
+                'blogger',
                 'digg',
                 'email',
                 'evernote',
                 'facebook',
                 'gmail',
-                'gplus',
                 'linkedin',
                 'pinterest',
                 'reddit',
@@ -183,10 +176,8 @@ class ShareTest extends TestCase
                 'telegramMe',
                 'tumblr',
                 'twitter',
-                'viadeo',
                 'vk',
                 'whatsapp',
-
                 'service',
                 'service2',
             ]
@@ -214,10 +205,10 @@ class ShareTest extends TestCase
     /**
      * @group live
      */
-    public function testDelicious()
+    public function testBlogger()
     {
-        $url = 'https://delicious.com/post?url=http%3A%2F%2Fwww.example.com&title=Example';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->delicious());
+        $url = 'https://www.blogger.com/blog-this.g?u=http%3A%2F%2Fwww.example.com&n=Example';
+        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->blogger());
         // $this->assertPageFound($url);
     }
 
@@ -226,8 +217,8 @@ class ShareTest extends TestCase
      */
     public function testDigg()
     {
-        $url = 'http://www.digg.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->digg());
+        $url = 'https://digg.com/news/submit-link?url=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com')->digg());
         // $this->assertPageFound($url);
     }
 
@@ -256,7 +247,7 @@ class ShareTest extends TestCase
      */
     public function testFacebook()
     {
-        $url = 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title=Example';
+        $url = 'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&quote=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->facebook());
         // $this->assertPageFound($url);
     }
@@ -274,20 +265,10 @@ class ShareTest extends TestCase
     /**
      * @group live
      */
-    public function testGplus()
-    {
-        $url = 'https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com';
-        $this->assertEquals($url, Share::load('http://www.example.com')->gplus());
-        // $this->assertPageFound($url);
-    }
-
-    /**
-     * @group live
-     */
     public function testLinkedin()
     {
-        $url = 'http://www.linkedin.com/shareArticle?url=http%3A%2F%2Fwww.example.com&title=Example&mini=true';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->linkedin());
+        $url = 'https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com')->linkedin());
         // $this->assertPageFound($url);
     }
 
@@ -296,8 +277,8 @@ class ShareTest extends TestCase
      */
     public function testPinterest()
     {
-        $url = 'http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com&description=Example&media=Media';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example', 'Media')->pinterest());
+        $url = 'https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com')->pinterest());
         // $this->assertPageFound($url);
     }
 
@@ -306,7 +287,7 @@ class ShareTest extends TestCase
      */
     public function testReddit()
     {
-        $url = 'http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example';
+        $url = 'https://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->reddit());
         // $this->assertPageFound($url);
     }
@@ -316,8 +297,8 @@ class ShareTest extends TestCase
      */
     public function testScoopit()
     {
-        $url = 'http://www.scoop.it/oexchange/share?url=http%3A%2F%2Fwww.example.com&title=Example';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->scoopit());
+        $url = 'https://www.scoop.it/bookmarklet?url=http%3A%2F%2Fwww.example.com';
+        $this->assertEquals($url, Share::load('http://www.example.com')->scoopit());
         // $this->assertPageFound($url);
     }
 
@@ -336,7 +317,7 @@ class ShareTest extends TestCase
      */
     public function testTumblr()
     {
-        $url = 'http://www.tumblr.com/share?u=http%3A%2F%2Fwww.example.com&t=Example&v=3';
+        $url = 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=http%3A%2F%2Fwww.example.com&title=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->tumblr());
         // $this->assertPageFound($url);
     }
@@ -348,16 +329,6 @@ class ShareTest extends TestCase
     {
         $url = 'https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.example.com&text=Example';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->twitter());
-        // $this->assertPageFound($url);
-    }
-
-    /**
-     * @group live
-     */
-    public function testViadeo()
-    {
-        $url = 'http://www.viadeo.com/?url=http%3A%2F%2Fwww.example.com&title=Example';
-        $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->viadeo());
         // $this->assertPageFound($url);
     }
 
