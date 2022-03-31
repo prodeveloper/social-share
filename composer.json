@@ -1,47 +1,47 @@
 {
-  "name": "chencha/share",
-  "description": "Share links with Laravel",
-  "keywords": [
-    "share",
-    "laravel"
-  ],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "thujohn",
-      "email": "jonathan.thuau@gmail.com"
+    "name": "chencha/share",
+    "description": "Share links with Laravel",
+    "keywords": [
+        "share",
+        "laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "thujohn",
+            "email": "jonathan.thuau@gmail.com"
+        },
+        {
+            "name": "chencha",
+            "email": "jacob@chenchatech.com"
+        },
+        {
+            "name": "datashaman",
+            "email": "marlinf@datashaman.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0|^8.1",
+        "illuminate/support": "^6|^7|^8|^9"
     },
-    {
-      "name": "chencha",
-      "email": "jacob@chenchatech.com"
+    "autoload": {
+        "psr-4": {
+            "Chencha\\Share\\": "src/",
+            "Tests\\": "tests/"
+        }
     },
-    {
-      "name": "datashaman",
-      "email": "marlinf@datashaman.com"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chencha\\Share\\ShareServiceProvider"
+            ],
+            "aliases": {
+                "Share": "Chencha\\Share\\ShareFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "orchestra/testbench": "^4|^5|^6|^7"
     }
-  ],
-  "require": {
-    "php": "^7.4|^8",
-    "illuminate/support": "^6|^7|^8"
-  },
-  "autoload": {
-    "psr-4": {
-      "Chencha\\Share\\" : "src/",
-      "Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Chencha\\Share\\ShareServiceProvider"
-      ],
-      "aliases": {
-        "Share": "Chencha\\Share\\ShareFacade"
-      }
-    }
-  },
-  "minimum-stability": "dev",
-  "require-dev": {
-    "orchestra/testbench": "^4|^5|^6"
-  }
 }
