@@ -1,11 +1,11 @@
 {
     "name": "chencha/share",
     "description": "Share links with Laravel",
+    "license": "MIT",
     "keywords": [
         "share",
         "laravel"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "thujohn",
@@ -21,29 +21,34 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0|^8.1",
-        "illuminate/support": "^6|^7|^8|^9"
+        "php": "^7.4 || ^8.0 || ^8.1",
+        "illuminate/support": "^6 || ^7 || ^8 || ^9"
     },
+    "require-dev": {
+        "orchestra/testbench": "^4 || ^5 || ^6 || ^7",
+        "rector/rector": "0.12.x-dev",
+        "tightenco/tlint": "dev-main"
+    },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Chencha\\Share\\": "src/",
             "Tests\\": "tests/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Chencha\\Share\\ShareServiceProvider"
-            ],
-            "aliases": {
-                "Share": "Chencha\\Share\\ShareFacade"
-            }
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
         }
     },
-    "minimum-stability": "dev",
-    "require-dev": {
-        "orchestra/testbench": "^4|^5|^6|^7",
-        "tightenco/tlint": "dev-main",
-        "rector/rector": "0.12.x-dev"
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Share": "Chencha\\Share\\ShareFacade"
+            },
+            "providers": [
+                "Chencha\\Share\\ShareServiceProvider"
+            ]
+        }
     }
 }
