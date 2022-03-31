@@ -41,11 +41,11 @@ jobs:
           key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-
 
-      - name: Install dependencies
-        run: composer install --prefer-dist
-
       - name: Require Laravel Support package
         run: composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
+
+      - name: Update dependencies
+        run: composer update
 
       - name: Run Tests
         run: vendor/bin/phpunit
