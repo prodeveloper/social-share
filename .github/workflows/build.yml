@@ -2,41 +2,47 @@
 name: Tests
 
 on:
-    pull_request:
-        branches:
-            - master
-
-env:
-    # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
-    COMPOSER_ROOT_VERSION: "dev-master"
+  pull_request:
+    branches:
+      - master
 
 jobs:
-    tests:
-        runs-on: ubuntu-latest
+  tests:
+    runs-on: ubuntu-latest
 
-        strategy:
-            fail-fast: true
-            matrix:
-                laravel: [^6, ^7, ^8, ^9]
-                php: [7.4, 8.0, 8.1]
+    strategy:
+      fail-fast: true
 
-        name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
+      matrix:
+        laravel: [^6, ^7, ^8, ^9]
+        php: [7.4, 8.0, 8.1]
 
-        steps:
-            - uses: actions/checkout@v2
-            # required for "git tag" presence for changelog-linker git tags resolver; default is 1
-            # https://github.com/actions/checkout#fetch-all-tags
-            - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-            # see https://github.com/shivammathur/setup-php
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  coverage: none
+    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
 
-            - uses: "ramsey/composer-install@v1"
-              with:
-                  composer-options: ${{ matrix.composer-options }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-            - run: composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer
+          coverage: none
 
-            - run: vendor/bin/phpunit
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-
+
+      - name: Require Laravel Support package
+        run: composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
+
+      - name: Run Tests
+        run: vendor/bin/phpunit
