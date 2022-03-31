@@ -32,14 +32,14 @@ class ShareTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            'Chencha\Share\ShareServiceProvider',
+            \Chencha\Share\ShareServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'Share' => 'Chencha\Share\ShareFacade',
+            'Share' => \Chencha\Share\ShareFacade::class,
         ];
     }
 
