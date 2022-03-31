@@ -35,9 +35,7 @@ class ShareServiceProvider extends ServiceProvider
         $configPath = __DIR__ . '/../config/social-share.php';
         $this->mergeConfigFrom($configPath, 'social-share');
 
-        $this->app->singleton('share', function ($app) {
-            return new Share($app);
-        });
+        $this->app->singleton('share', fn($app) => new Share($app));
     }
 
     /**
