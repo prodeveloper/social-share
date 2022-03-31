@@ -14,6 +14,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/views',
     ]);
 
     // Define what rule sets will be applied
