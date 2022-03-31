@@ -60,7 +60,7 @@ class Share
     protected function generateUrl($serviceId)
     {
         $vars = [
-            'service' => $this->app->config->get("social-share.services.$serviceId", []),
+            'service' => $this->app->config->get("social-share.services.{$serviceId}", []),
             'sep' => $this->app->config->get('social-share.separator', '&'),
         ];
 
