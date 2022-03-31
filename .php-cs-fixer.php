@@ -1,6 +1,8 @@
 <?php
 
-$config = new PhpCsFixer\Config();
+use PhpCsFixer\Config;
+
+$config = new Config();
 
 return $config
     ->setRiskyAllowed(true)

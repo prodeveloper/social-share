@@ -29,33 +29,6 @@ class ShareTest extends TestCase
         'service2' => 'http://service2.example.com?url=http%3A%2F%2Fwww.example.com&title=Example&extra1=Extra%201&extra2=Extra%202',
     ];
 
-    protected function getPackageProviders($app)
-    {
-        return [
-            \Chencha\Share\ShareServiceProvider::class,
-        ];
-    }
-
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Share' => \Chencha\Share\ShareFacade::class,
-        ];
-    }
-
-    protected function getEnvironmentSetup($app)
-    {
-        $app->config->set('social-share.services.service', [
-            'uri' => 'http://service.example.com',
-            'mediaName' => 'media',
-        ]);
-
-        $app->config->set('social-share.services.service2', [
-            'uri' => 'http://service2.example.com',
-            'extra' => [ 'extra1' => 'Extra 1', 'extra2' => 'Extra 2' ]
-        ]);
-    }
-
     public function testCallMethod()
     {
         $view = View::make('social-share::mock');
@@ -69,7 +42,7 @@ class ShareTest extends TestCase
                 'url' => 'http://www.example.com',
                 'title' => '',
                 'media' => '',
-                'sep' => '&'
+                'sep' => '&',
             ])
             ->andReturn($view);
 
@@ -86,7 +59,7 @@ class ShareTest extends TestCase
                 'url' => 'http://www.example.com',
                 'title' => '',
                 'media' => '',
-                'sep' => '&'
+                'sep' => '&',
             ])
             ->andReturn($view);
 
@@ -350,5 +323,32 @@ class ShareTest extends TestCase
         $url = 'whatsapp://send?text=Example%20http%3A%2F%2Fwww.example.com';
         $this->assertEquals($url, Share::load('http://www.example.com', 'Example')->whatsapp());
         // $this->assertPageFound($url);
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            \Chencha\Share\ShareServiceProvider::class,
+        ];
+    }
+
+    protected function getPackageAliases($app)
+    {
+        return [
+            'Share' => \Chencha\Share\ShareFacade::class,
+        ];
+    }
+
+    protected function getEnvironmentSetup($app)
+    {
+        $app->config->set('social-share.services.service', [
+            'uri' => 'http://service.example.com',
+            'mediaName' => 'media',
+        ]);
+
+        $app->config->set('social-share.services.service2', [
+            'uri' => 'http://service2.example.com',
+            'extra' => [ 'extra1' => 'Extra 1', 'extra2' => 'Extra 2' ]
+        ]);
     }
 }

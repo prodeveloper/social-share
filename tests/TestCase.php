@@ -2,6 +2,8 @@
 
 namespace Tests;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
 {
 }
