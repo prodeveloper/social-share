@@ -53,5 +53,10 @@ jobs:
       - name: Update dependencies
         run: composer update
 
+      - name: Lint code
+        run: |
+          tlint
+          rector --dry-run
+
       - name: Run Tests
         run: vendor/bin/phpunit
