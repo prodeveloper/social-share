@@ -55,8 +55,8 @@ jobs:
 
       - name: Lint code
         run: |
-          tlint
-          rector --dry-run
+          vendor/bin/tlint
+          vendor/bin/rector --dry-run
 
       - name: Run Tests
         run: vendor/bin/phpunit
