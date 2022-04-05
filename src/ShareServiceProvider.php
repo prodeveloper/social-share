@@ -15,8 +15,6 @@ class ShareServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -27,15 +25,13 @@ class ShareServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
         $configPath = __DIR__ . '/../config/social-share.php';
         $this->mergeConfigFrom($configPath, 'social-share');
 
-        $this->app->singleton('share', fn($app) => new Share($app));
+        $this->app->singleton('share', fn ($app) => new Share($app));
     }
 
     /**
@@ -45,6 +41,6 @@ class ShareServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('share');
+        return ['share'];
     }
 }

@@ -23,6 +23,7 @@ class Share
         $this->url = $url;
         $this->title = $title;
         $this->media = $media;
+
         return $this;
     }
 
@@ -42,7 +43,7 @@ class Share
             array_pop($services);
         }
 
-        $return = array();
+        $return = [];
 
         if ($services) {
             foreach ($services as $service) {
@@ -75,6 +76,7 @@ class Share
         }
 
         $view = Arr::get($vars['service'], 'view', 'social-share::default');
+
         return trim(View::make($view, $vars)->render());
     }
 
