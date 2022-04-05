@@ -5,7 +5,6 @@ namespace Tests;
 use Chencha\Share\ShareFacade as Share;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\View;
-use Illuminate\View\Factory as ViewFactory;
 
 /**
  * @noRector Rector\Php70\Rector\StaticCall\StaticCallOnNonStaticToInstanceCallRector
@@ -38,7 +37,7 @@ class ShareTest extends TestCase
 
         View::shouldReceive('make')
             ->with('social-share::default', [
-                'service' => [ 'uri' => 'http://service2.example.com', 'extra' => [
+                'service' => ['uri' => 'http://service2.example.com', 'extra' => [
                     'extra1' => 'Extra 1',
                     'extra2' => 'Extra 2',
                 ]],
@@ -58,7 +57,7 @@ class ShareTest extends TestCase
 
         View::shouldReceive('make')
             ->with('social-share::default', [
-                'service' => [ 'uri' => 'http://service.example.com', 'mediaName' => 'media' ],
+                'service' => ['uri' => 'http://service.example.com', 'mediaName' => 'media'],
                 'url' => 'http://www.example.com',
                 'title' => '',
                 'media' => '',
@@ -351,7 +350,7 @@ class ShareTest extends TestCase
 
         $app->config->set('social-share.services.service2', [
             'uri' => 'http://service2.example.com',
-            'extra' => [ 'extra1' => 'Extra 1', 'extra2' => 'Extra 2' ]
+            'extra' => ['extra1' => 'Extra 1', 'extra2' => 'Extra 2'],
         ]);
     }
 }
