@@ -7,6 +7,9 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\Factory as ViewFactory;
 
+/**
+ * @noRector Rector\Php70\Rector\StaticCall\StaticCallOnNonStaticToInstanceCallRector
+ */
 class ShareTest extends TestCase
 {
     protected $expected = [
