@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
+use Rector\Config\RectorConfig;
 use Rector\Core\Configuration\Option;
 use Rector\Laravel\Set\LaravelSetList;
 use Rector\Php70\Rector\StaticCall\StaticCallOnNonStaticToInstanceCallRector;
 use Rector\Set\ValueObject\LevelSetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
+return static function (RectorConfig $rectorConfig): void {
+    $parameters = $rectorConfig->parameters();
 
     $parameters->set(Option::PATHS, [
         __DIR__ . '/config',
@@ -24,6 +24,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]);
 
-    $containerConfigurator->import(LaravelSetList::LARAVEL_60);
-    $containerConfigurator->import(LevelSetList::UP_TO_PHP_74);
+    $rectorConfig->import(LaravelSetList::LARAVEL_60);
+    $rectorConfig->import(LevelSetList::UP_TO_PHP_74);
 };
