@@ -22,11 +22,11 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0 || ^8.1",
-        "illuminate/support": "^6 || ^7 || ^8 || ^9"
+        "illuminate/support": "^6 || ^7 || ^8 || ^9|^10.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^4 || ^5 || ^6 || ^7",
-        "rector/rector": "0.13.x-dev",
+        "orchestra/testbench": "^4 || ^5 || ^6 || ^7|^8.0",
+        "rector/rector": "0.13.x-dev|^0.15",
         "tightenco/tlint": "dev-main"
     },
     "minimum-stability": "dev",
